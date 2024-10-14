@@ -1,0 +1,51 @@
+#include <bits/stdc++.h>
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include <vector>
+#define for0(i, n) for (int i = 0; i < n; ++i)
+#define for1(i, n) for (int i = 1; i <= n; ++i)
+#define el cout<<"\n"
+using namespace std;
+int n = 3;
+pair <int, int> arr[200005];
+int main(){
+    ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+    int t;cin>>t;
+    //string s;
+    //cin>>s;
+    //cout<<s;
+    while (t--)
+    {
+        int n; cin>>n;
+        vector <string> arr(n);
+        map <string, bool> m;
+        for (int i = 0; i < n; i++)
+        {
+            cin>>arr[i];
+            m[arr[i]] = 1;
+        }
+        for (int i = 0; i < n; i++)
+        {
+            bool check = 0;
+            for (int j = 1; j < arr[i].size(); j++)
+            {
+                string t1 = arr[i].substr(0,j);
+                string t2 = arr[i].substr(j);
+                if (m[t1] && m[t2]){
+                    check = 1;
+                    break;
+                } 
+            }
+            cout<<check;
+            
+        }
+        el;
+        
+        
+        
+    }
+    
+    
+    return 0;
+}
