@@ -1,0 +1,66 @@
+#include <bits/stdc++.h>
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include <vector>
+#define for0(i, n) for (int i = 0; i < n; ++i)
+#define for1(i, n) for (int i = 1; i <= n; ++i)
+#define el cout<<"\n"
+using namespace std;
+//int n = 3;
+//pair <int, int> arr[200005];
+int f (int x){
+    int s = 0;
+    while (x!=0)
+    {
+        x = x/10;
+        ++s;
+    }
+    return s;
+}
+int main(){
+    ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+    int t;cin>>t;
+    //string s;
+    //cin>>s;
+    //cout<<s;
+    //map <string, int> m;
+    
+    while (t--){   
+        int n;cin>>n;
+        priority_queue <int> a,b;
+        
+        for (int i = 0; i < n; i++){
+            int x;cin>>x;    
+            a.push(x);
+        }
+        for (int i = 0; i < n; i++){
+            int x;cin>>x;    
+            b.push(x);
+        }
+        int cnt = 0;
+        while (a.size()){
+            int y = a.top();
+            int z = b.top();
+            if (y == z){
+                a.pop();
+                b.pop();
+            }
+            else{
+                if (y > z){
+                    a.pop();
+                    a.push(f(y));
+                }
+                else{
+                    b.pop();
+                    b.push(f(z));
+                }
+                ++cnt;
+            }
+        }
+        cout << cnt;
+        el;
+    }
+        
+    return 0;
+}
